@@ -24,7 +24,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val visible = remember { mutableStateOf(false) }
 
+                    Button(
+                        modifier = Modifier.wrapContentSize(),
+                        onClick = { visible.value = true }
+                    ) {
+                        Text(text = "Smile!")
+                    }
+
+                    FloatingSmile(onClick = { visible.value = false }, visible = visible.value)
                 }
             }
         }
