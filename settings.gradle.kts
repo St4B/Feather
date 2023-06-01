@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Feather"
 include(":app")
+include(":feather")
