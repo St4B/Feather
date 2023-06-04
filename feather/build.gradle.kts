@@ -1,7 +1,11 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    id("org.jetbrains.dokka")
+    id("com.vanniktech.maven.publish")
 }
+
+apply(plugin = "com.vanniktech.maven.publish")
 
 android {
     namespace = "com.quadible.feather"
@@ -36,6 +40,15 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.2"
     }
+}
+
+tasks.dokkaHtml.configure {
+    outputDirectory.set(buildDir.resolve("dokka"))
+}
+
+mavenPublishing {
+    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.DEFAULT)
+    signAllPublications()
 }
 
 dependencies {
